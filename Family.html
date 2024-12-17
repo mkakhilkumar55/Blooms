@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FamilyTree JS Example</title>
+    <!-- Include the FamilyTree JS file -->
+    <script src="familytree.js"></script>
+    <style>
+        /* Set up styles for the family tree container */
+        #tree {
+            width: 100%;
+            height: 600px;
+            border: 1px solid #ccc;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Blooms</h1>
+    
+    <!-- Family Tree container -->
+    <div id="tree"></div>
+
+    <!-- FamilyTree JS Script -->
+    <script>
+        let family = new FamilyTree("#tree", {
+            nodeBinding: {
+                field_0: "name",
+                img_0: "img"
+            },
+            nodes: [
+                // Parents
+                { id: 1, pids: [2], name: "Vasudev", gender: "male", img: "https://via.placeholder.com/100" },
+                { id: 2, pids: [1], name: "Kamalamma", gender: "female", img: "https://via.placeholder.com/100" },
+                
+                // Child
+                
+                { id: 3, mid: 2, fid: 1,pids: [12], name: "Muralamma", gender: "female", img: "https://via.placeholder.com/100" },
+                { id: 4, mid: 2, fid: 1,pids: [13], name: "Yenkatamma", gender: "female", img: "https://via.placeholder.com/100" },
+                { id: 5, mid: 2, fid: 1,pids: [14], name: "Veeresham", gender: "male", img: "https://via.placeholder.com/100" },
+                { id: 6, mid: 2, fid: 1,pids: [15], name: "Vishnu Vardhan", gender: "male", img: "https://via.placeholder.com/100" },
+                { id: 7, mid: 2, fid: 1, pids: [16],name: "Aruna", gender: "female", img: "https://via.placeholder.com/100" },
+                { id: 8, mid: 2, fid: 1, pids: [17],name: "Jagadish", gender: "male", img: "https://via.placeholder.com/100" },
+                { id: 9, mid: 2, fid: 1, pids: [18],name: "Chandra Shekhar", gender: "male", img: "https://via.placeholder.com/100" },
+                { id: 10, mid: 2, fid: 1, pids: [19],name: "Ramadevi", gender: "female", img: "https://via.placeholder.com/100" },
+                { id: 11, mid: 2, fid: 1,pids: [20], name: "Hymavathi", gender: "female", img: "https://via.placeholder.com/100" },
+                
+              
+                
+                // Peter's Partner
+                { id: 12, pids: [3], name: "Vangalla Shekar", gender: "male", img: "https://via.placeholder.com/100" },
+                { id: 13, pids: [4], name: "Mudipuri Yenkataiah", gender: "male", img: "https://via.placeholder.com/100" },
+                { id: 14, pids: [5], name: "Hymavathi", gender: "female", img: "https://via.placeholder.com/100" },
+                { id: 15, pids: [6], name: "Vijaya Lakshmi", gender: "female", img: "https://via.placeholder.com/100" },
+                { id: 16, pids: [7], name: "Alishetty Prakash", gender: "male", img: "https://via.placeholder.com/100" },
+                { id: 17, pids: [8], name: "Padma", gender: "female", img: "https://via.placeholder.com/100" },
+                { id: 18, pids: [9], name: "Shoba", gender: "female", img: "https://via.placeholder.com/100" },
+                { id: 19, pids: [10], name: "Yerram Vijay", gender: "male", img: "https://via.placeholder.com/100" },
+                { id: 20, pids: [11], name: "Varagani Prasad", gender: "male", img: "https://via.placeholder.com/100" },
+               
+                
+                // Child of Peter and Emily
+                { id: 21, mid: 3, fid: 12,pids: [42], name: "Vijaya", gender: "female", img: "https://via.placeholder.com/100" },
+                { id: 22, mid: 3, fid: 12,pids: [43], name: "Madhavi", gender: "female", img: "https://via.placeholder.com/100" },
+                { id: 23, mid: 3, fid: 12,pids: [44], name: "Rammohan", gender: "male", img: "https://via.placeholder.com/100" },
+                { id: 24, mid: 4, fid: 13,pids: [45], name: "Saritha", gender: "female", img: "https://via.placeholder.com/100" },
+                { id: 25, mid: 4, fid: 13,pids: [46], name: "Haritha", gender: "female", img: "https://via.placeholder.com/100" },
+                { id: 26, mid: 4, fid: 13,pids: [47], name: "Hari Prasad", gender: "male", img: "https://via.placeholder.com/100" },
+                { id: 27, mid: 5, fid: 14,pids: [48], name: "Sai Sumanth", gender: "male", img: "https://via.placeholder.com/100" },
+                { id: 28, mid: 5, fid: 14, name: "Sai Ranjith", gender: "male", img: "https://via.placeholder.com/100" },
+                { id: 29, mid: 6, fid: 15, name: "Nikhil Kumar", gender: "male", img: "https://via.placeholder.com/100" },
+                { id: 30, mid: 6, fid: 15, name: "Akhil Kumar", gender: "male", img: "https://via.placeholder.com/100" },
+                { id: 31, mid: 7, fid: 16,pids: [49], name: "Cherishma", gender: "female", img: "https://via.placeholder.com/100" },
+                { id: 32, mid: 7, fid: 16,pids: [50], name: "Vaishnavi", gender: "female", img: "https://via.placeholder.com/100" },
+                { id: 33, mid: 7, fid: 16, name: "Abhijith", gender: "male", img: "https://via.placeholder.com/100" },
+                { id: 34, mid: 8, fid: 17, name: "Sampath", gender: "male", img: "https://via.placeholder.com/100" },
+                { id: 35, mid: 8, fid: 17, name: "Vasu", gender: "male", img: "https://via.placeholder.com/100" },
+                { id: 36, mid: 9, fid: 18, name: "Aishwarya", gender: "female", img: "https://via.placeholder.com/100" },
+                { id: 37, mid: 9, fid: 18, name: "Ajay Kumar", gender: "male", img: "https://via.placeholder.com/100" },
+                { id: 38, mid: 10, fid: 19, name: "Akshitha", gender: "female", img: "https://via.placeholder.com/100" },
+                { id: 39, mid: 10, fid: 19, name: "Adarsh", gender: "male", img: "https://via.placeholder.com/100" },
+                { id: 40, mid: 11, fid: 20, name: "Lakshmi Narasimha", gender: "male", img: "https://via.placeholder.com/100" },
+                { id: 41, mid: 11, fid: 20, name: "Deva Datta", gender: "male", img: "https://via.placeholder.com/100" },
+
+
+               
+                //Childern-Partners
+                { id: 42, pids: [21], name: " Mudi Ashok", gender: "male", img: "https://via.placeholder.com/100" },
+                { id: 43, pids: [22], name: " Neela Raghavendra", gender: "male", img: "https://via.placeholder.com/100" },
+                { id: 44, pids: [23], name: " Jyothi", gender: "female", img: "https://via.placeholder.com/100" },
+                { id: 45, pids: [24], name: " Yedupula Kiran", gender: "male", img: "https://via.placeholder.com/100" },
+                { id: 46, pids: [25], name: " Vasa Sandeep", gender: "male", img: "https://via.placeholder.com/100" },
+                { id: 47, pids: [26], name: " Anila", gender: "female", img: "https://via.placeholder.com/100" },
+                { id: 48, pids: [27], name: " Lakshmi Kalyani", gender: "female", img: "https://via.placeholder.com/100" },
+                { id: 49, pids: [31], name: " Burugu Mahesh", gender: "male", img: "https://via.placeholder.com/100" },
+                { id: 50, pids: [32], name: " Aalampally Trishul", gender: "male", img: "https://via.placeholder.com/100" },
+
+                //sub-childern
+                { id: 51, mid: 21, fid: 42, name: "Abhigna", gender: "female", img: "https://via.placeholder.com/100" },
+                { id: 52, mid: 21, fid: 42, name: "Anugna", gender: "female", img: "https://via.placeholder.com/100" },
+                { id: 53, mid: 22, fid: 43, name: "kedharinath", gender: "male", img: "https://via.placeholder.com/100" },
+                { id: 54, mid: 22, fid: 43, name: "Hari krishna", gender: "male", img: "https://via.placeholder.com/100" },
+                { id: 55, mid: 44, fid: 23, name: "Dheeraj", gender: "male", img: "https://via.placeholder.com/100" },
+                { id: 56, mid: 24, fid: 45, name: "Adithya", gender: "male", img: "https://via.placeholder.com/100" },
+                { id: 57, mid: 24, fid: 45, name: "Rithvik", gender: "male", img: "https://via.placeholder.com/100" },
+                { id: 58, mid: 25, fid: 46, name: "Sai Sahashra", gender: "female", img: "https://via.placeholder.com/100" },
+                { id: 59, mid: 25, fid: 46, name: "Anuritha", gender: "female", img: "https://via.placeholder.com/100" },
+                { id: 60, mid: 47, fid: 26, name: "Krithik", gender: "male", img: "https://via.placeholder.com/100" },
+                { id: 61, mid: 48, fid: 27, name: "Vedashri", gender: "female", img: "https://via.placeholder.com/100" },
+                { id: 62, mid: 31, fid: 49, name: "Veeransh Karthikeyan", gender: "male", img: "https://via.placeholder.com/100" },
+                { id: 63, mid: 31, fid: 49, name: "Viradhya Aaruhi", gender: "female", img: "https://via.placeholder.com/100" },
+
+
+
+
+            ]
+        });
+    </script>
+
+</body>
+</html>
