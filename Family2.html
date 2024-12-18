@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Family Tree</title>
+    <script src="familytree copy.js"></script>
+    <style>
+        /* General styles */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: Helvetica;
+            overflow: hidden;
+        }
+
+        #tree {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Family Tree container -->
+    <div id="tree"></div>
+
+    <script>
+        // Family Tree options
+        var options = {
+            scaleInitial: 1,
+            siblingSeparation: 100,
+            template: 'john',
+            mouseScrool: FamilyTree.none
+        };
+
+        // Initialize FamilyTree.js
+        var chart = new FamilyTree(document.getElementById("tree"), {
+            mouseScrool: options.mouseScrool,
+            scaleInitial: options.scaleInitial,
+            siblingSeparation: options.siblingSeparation,
+            template: options.template,
+            nodeBinding: {
+                field_0: "name",
+                field_1: "title",
+                img_0: "img",
+            }
+        });
+
+        // Custom family data (your dataset mapped into this format)
+        chart.load([
+                    { id: 70, name: "Sarwa Shri Kondaiah", gender: "male", img: "https://via.placeholder.com/100" },
+
+                    // Parents
+                    { id: 1, pids: [2], name: "Vasudev", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 2, mid: 71, fid: 70,pids: [1], name: "Kamalamma", gender: "female", img: "https://via.placeholder.com/100" },
+
+                    // Child
+
+                    { id: 3, mid: 2, fid: 1,pids: [12], name: "Muralamma", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 4, mid: 2, fid: 1,pids: [13], name: "Yenkatamma", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 5, mid: 2, fid: 1,pids: [14], name: "Veeresham", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 6, mid: 2, fid: 1,pids: [15], name: "Vishnu Vardhan", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 7, mid: 2, fid: 1, pids: [16],name: "Aruna", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 8, mid: 2, fid: 1, pids: [17],name: "Jagadish", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 9, mid: 2, fid: 1, pids: [18],name: "Chandra Shekhar", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 10, mid: 2, fid: 1, pids: [19],name: "Ramadevi", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 11, mid: 2, fid: 1,pids: [20], name: "Hymavathi", gender: "female", img: "https://via.placeholder.com/100" },
+
+
+
+                    // Peter's Partner
+                    { id: 12, pids: [3], name: "Vangalla Shekar", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 13, pids: [4], name: "Mudipuri Yenkataiah", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 14, pids: [5], name: "Hymavathi", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 15, pids: [6], name: "Vijaya Lakshmi", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 16, pids: [7], name: "Alishetty Prakash", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 17, pids: [8], name: "Padma", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 18, pids: [9], name: "Shoba", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 19, pids: [10], name: "Yerram Vijay", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 20, pids: [11], name: "Varagani Prasad", gender: "male", img: "https://via.placeholder.com/100" },
+
+
+                    // Child 
+                    { id: 21, mid: 3, fid: 12,pids: [42], name: "Vijaya", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 22, mid: 3, fid: 12,pids: [43], name: "Madhavi", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 23, mid: 3, fid: 12,pids: [44], name: "Rammohan", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 24, mid: 4, fid: 13,pids: [45], name: "Saritha", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 25, mid: 4, fid: 13,pids: [46], name: "Haritha", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 26, mid: 4, fid: 13,pids: [47], name: "Hari Prasad", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 27, mid: 5, fid: 14,pids: [48], name: "Sai Sumanth", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 28, mid: 5, fid: 14, name: "Sai Ranjith", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 29, mid: 6, fid: 15, name: "Nikhil Kumar", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 30, mid: 6, fid: 15, name: "Akhil Kumar", gender: "male", img: "Akhil.jpg" },
+                    { id: 31, mid: 7, fid: 16,pids: [49], name: "Cherishma", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 32, mid: 7, fid: 16,pids: [50], name: "Vaishnavi", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 33, mid: 7, fid: 16, name: "Abhijith", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 34, mid: 8, fid: 17, name: "Sampath", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 35, mid: 8, fid: 17, name: "Vasu", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 36, mid: 9, fid: 18, name: "Aishwarya", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 37, mid: 9, fid: 18, name: "Ajay Kumar", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 38, mid: 10, fid: 19, name: "Akshitha", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 39, mid: 10, fid: 19, name: "Adarsh", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 40, mid: 11, fid: 20, name: "Lakshmi Narasimha", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 41, mid: 11, fid: 20, name: "Deva Datta", gender: "male", img: "https://via.placeholder.com/100" },
+
+
+
+                    //Childern-Partners
+                    { id: 42, pids: [21], name: " Mudi Ashok", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 43, pids: [22], name: " Neela Raghavendra", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 44, pids: [23], name: " Jyothi", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 45, pids: [24], name: " Yedupula Kiran", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 46, pids: [25], name: " Vasa Sandeep", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 47, pids: [26], name: " Anila", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 48, pids: [27], name: " Lakshmi Kalyani", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 49, pids: [31], name: " Burugu Mahesh", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 50, pids: [32], name: " Aalampally Trishul", gender: "male", img: "https://via.placeholder.com/100" },
+
+                    //sub-childern
+                    { id: 51, mid: 21, fid: 42, name: "Abhigna", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 52, mid: 21, fid: 42, name: "Anugna", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 53, mid: 22, fid: 43, name: "kedharinath", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 54, mid: 22, fid: 43, name: "Hari krishna", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 55, mid: 44, fid: 23, name: "Dheeraj", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 56, mid: 24, fid: 45, name: "Adithya", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 57, mid: 24, fid: 45, name: "Rithvik", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 58, mid: 25, fid: 46, name: "Sai Sahashra", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 59, mid: 25, fid: 46, name: "Anuritha", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 60, mid: 47, fid: 26, name: "Krithik", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 61, mid: 48, fid: 27, name: "Vedashri", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 62, mid: 31, fid: 49, name: "Veeransh Karthikeyan", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 63, mid: 31, fid: 49, name: "Viradhya Aaruhi", gender: "female", img: "https://via.placeholder.com/100" },
+
+
+
+                    // Root Parents
+                    { id: 70, pids: [71], name: "Sarwa Shri Kondaiah", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 71, pids: [70], name: "Govind", gender: "female", img: "https://via.placeholder.com/100" },
+
+                    // Veeraiah and Shankaramma
+                    { id: 72, mid: 71, fid: 70, pids: [73], name: "Veeraiah", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 73, pids: [72], name: "Shankaramma", gender: "female", img: "https://via.placeholder.com/100" },
+
+                    // Seetayya and Alivelu
+                    { id: 74, mid: 73, fid: 72, pids: [75], name: "Seetayya", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 75, pids: [74], name: "Alivelu", gender: "female", img: "https://via.placeholder.com/100" },
+
+                    // Radhika and Gandhe Hariprasad
+                    { id: 76, mid: 75, fid: 74, pids: [77], name: "Radhika", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 77, pids: [76], name: "Gandhe Hariprasad", gender: "male", img: "https://via.placeholder.com/100" },
+
+                    // Children of Radhika and Gandhe Hariprasad
+                    { id: 78, mid: 76, fid: 77, name: "Aaradhya", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 79, mid: 76, fid: 77, name: "Sai Priyansh", gender: "male", img: "https://via.placeholder.com/100" },
+
+                    // Rakesh and Sahiti
+                    { id: 80, mid: 75, fid: 74, pids: [81], name: "Rakesh", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 81, pids: [80], name: "Sahiti", gender: "female", img: "https://via.placeholder.com/100" },
+
+                    // Children of Rakesh and Sahiti
+                    { id: 82, mid: 81, fid: 80, name: "Ashwadh Kumar", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 83, mid: 81, fid: 80, name: "Sai Nitya Ishika", gender: "female", img: "https://via.placeholder.com/100" },
+
+                    // Rajesh Kumar
+                    { id: 84, mid: 75, fid: 74, name: "Rajesh Kumar", gender: "male", img: "https://via.placeholder.com/100" },
+
+
+                    // Kumar and Balamani
+                    { id: 85, mid: 73, fid: 72, pids: [86], name: "Kumar", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 86, pids: [85], name: "Balamani", gender: "female", img: "https://via.placeholder.com/100" },
+
+                    // Sampath Kumar and Nandini
+                    { id: 87, mid: 86, fid: 85, pids: [88], name: "Sampath Kumar", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 88, pids: [87], name: "Nandini", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 89, mid: 88, fid: 87, name: "Aaryan", gender: "male", img: "https://via.placeholder.com/100" },
+
+                    // Sandeep Kumar and Sravanthi
+                    { id: 90, mid: 86, fid: 85, pids: [91], name: "Sandeep Kumar", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 91, pids: [90], name: "Sravanthi", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 92, mid: 91, fid: 90, name: "Shriyukth", gender: "male", img: "https://via.placeholder.com/100" },
+
+                    // Srinivas and Annapurna
+                    { id: 93, mid: 73, fid: 72, pids: [94], name: "Srinivas", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 94, pids: [93], name: "Annapurna", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 95, mid: 94, fid: 93, name: "Manish Kumar", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 96, mid: 94, fid: 93, name: "Tarun", gender: "male", img: "https://via.placeholder.com/100" },
+
+                    // Kondaiah Peddha and Nagaleela
+                    { id: 97, mid: 73, fid: 72, pids: [98], name: "Kondaiah", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 98, pids: [97], name: "Nagaleela", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 99, mid: 98, fid: 97, name: "Sai Charan", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 100, mid: 98, fid: 97, name: "Vaishnavi", gender: "female", img: "https://via.placeholder.com/100" },
+
+                    // Varalakshmi and Dachepally Venkateshwar Rao
+                    { id: 101, mid: 73, fid: 72, pids: [102], name: "Varalakshmi", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 102, pids: [101], name: "Dachepally Venkateshwar Rao", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 103, mid: 101, fid: 102, pids: [104], name: "Vikas", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 104, pids: [103], name: "Apurva", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 105, mid: 101, fid: 102, pids: [106], name: "Vinay", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 106, pids: [105], name: "Sravya", gender: "female", img: "https://via.placeholder.com/100" },
+
+                    // Bhaskar and Srividya
+                    { id: 107, mid: 73, fid: 72, pids: [108], name: "Bhaskar", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 108, pids: [107], name: "Srividya", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 109, mid: 108, fid: 107, name: "Rithwik", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 110, mid: 108, fid: 107, name: "Souchith", gender: "male", img: "https://via.placeholder.com/100" },
+
+                    // Yadaiah and Kousalya
+                    { id: 111, mid: 71, fid: 70, pids: [112], name: "Yadaiah", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 112, pids: [111], name: "Kousalya", gender: "female", img: "https://via.placeholder.com/100" },
+
+                    // Kondaiah and Hemalatha
+                    { id: 113, mid: 112, fid: 111, pids: [114], name: "Kondaiah", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 114, pids: [113], name: "Hemalatha", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 115, mid: 114, fid: 113, name: "Sravya", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 116, mid: 114, fid: 113, name: "Sahithi", gender: "female", img: "https://via.placeholder.com/100" },
+
+                    // Venu and Manjula
+                    { id: 117, mid: 112, fid: 111, pids: [118], name: "Venu", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 118, pids: [117], name: "Manjula", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 119, mid: 118, fid: 117, name: "Harsha", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 120, mid: 118, fid: 117, name: "Sanjana", gender: "female", img: "https://via.placeholder.com/100" },
+
+                    // Vishnu Vardhan and Vijaya Laxmi
+                    { id: 121, mid: 112, fid: 111, pids: [122], name: "Vishnu Vardhan", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 122, pids: [121], name: "Vijaya Laxmi", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 123, mid: 122, fid: 121, name: "Nikhil Kumar", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 124, mid: 122, fid: 121, name: "Akhil Kumar", gender: "male", img: "https://via.placeholder.com/100" },
+
+                    // Sandhya and Kamishetty Shyam
+                    { id: 125, mid: 112, fid: 111, pids: [126], name: "Sandhya", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 126, pids: [125], name: "Kamishetty Shyam", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 127, mid: 125, fid: 126, name: "Sai Sumanth", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 128, mid: 125, fid: 126, name: "Hemanth Krishna", gender: "male", img: "https://via.placeholder.com/100" },
+
+
+
+                    // Narsimha and Bagyamma
+                    { id: 129, mid: 71, fid: 70, pids: [130], name: "Narsimha", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 130, pids: [129], name: "Bagyamma", gender: "female", img: "https://via.placeholder.com/100" },
+
+                    // Shiv Prasad and Lakshmi
+                    { id: 131, mid: 130, fid: 129, pids: [132], name: "Shiv Prasad", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 132, pids: [131], name: "Lakshmi", gender: "female", img: "https://via.placeholder.com/100" },
+
+                    // Satya Prasad and Madhavi
+                    { id: 133, mid: 130, fid: 129, pids: [134], name: "Satya Prasad", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 134, pids: [133], name: "Madhavi", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 135, mid: 134, fid: 133, name: "Krithika", gender: "female", img: "https://via.placeholder.com/100" },
+
+                    // Koteshwar and Sreevani
+                    { id: 136, mid: 130, fid: 129, pids: [137], name: "Koteshwar", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 137, pids: [136], name: "Sreevani", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 138, mid: 137, fid: 136, name: "Aarush", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 139, mid: 137, fid: 136, name: "Aashritha", gender: "female", img: "https://via.placeholder.com/100" },
+
+                    // Sravan Kumar and Lakshmi Sruthika
+                    { id: 140, mid: 130, fid: 129, pids: [141], name: "Sravan Kumar", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 141, pids: [140], name: "Lakshmi Sruthika", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 142, mid: 141, fid: 140, name: "Aadrith", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 143, mid: 141, fid: 140, name: "Maanvi", gender: "female", img: "https://via.placeholder.com/100" },
+
+                    // Swathi and Neela Shiva Prasad
+                    { id: 144, mid: 130, fid: 129, pids: [145], name: "Swathi", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 145, pids: [144], name: "Neela Shiva Prasad", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 146, mid: 145, fid: 144, name: "Shreshta", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 147, mid: 145, fid: 144, name: "Sahasra", gender: "female", img: "https://via.placeholder.com/100" },
+
+
+                    // Shekar and Jayamma
+                    { id: 148, mid: 71, fid: 70, pids: [149], name: "Shekar", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 149, pids: [148], name: "Jayamma", gender: "female", img: "https://via.placeholder.com/100" },
+
+                    // Radha and Manikya Rammohan
+                    { id: 150, mid: 149, fid: 148, pids: [151], name: "Radha", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 151, pids: [150], name: "Manikya Rammohan", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 152, mid: 150, fid: 151, name: "Manoj", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 153, mid: 150, fid: 151, name: "Gnapi", gender: "female", img: "https://via.placeholder.com/100" },
+
+                    // Kishore and Madhavi
+                    { id: 154, mid: 149, fid: 148, pids: [155], name: "Kishore", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 155, pids: [154], name: "Madhavi", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 156, mid: 155, fid: 154, name: "Moksha", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 157, mid: 155, fid: 154, name: "Vishwa", gender: "male", img: "https://via.placeholder.com/100" },
+
+                    // Manju and Aravind
+                    { id: 158, mid: 149, fid: 148, pids: [159], name: "Manju", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 159, pids: [158], name: "Aravind", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 160, mid: 158, fid: 159, name: "Rishan", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 161, mid: 158, fid: 159, name: "Medha", gender: "female", img: "https://via.placeholder.com/100" },
+
+                    // Sandya and Srinivas
+                    { id: 162, mid: 149, fid: 148, pids: [163], name: "Sandya", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 163, pids: [162], name: "Srinivas", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 164, mid: 162, fid: 163, name: "Ashwath", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 165, mid: 162, fid: 163, name: "Smaahi", gender: "female", img: "https://via.placeholder.com/100" },
+
+
+
+
+                    // Eshwaramma and Dhupaguntla Nagabushanam
+                    { id: 166, mid: 71, fid: 70, pids: [167], name: "Eshwaramma", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 167, pids: [166], name: "Nagabushanam", gender: "male", img: "https://via.placeholder.com/100" },
+
+                    // Vijaya Lakshmi and Anjiah
+                    { id: 168, mid: 166, fid: 167, pids: [169], name: "Vijaya Lakshmi", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 169, pids: [168], name: "Anjiah", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 170, mid: 168, fid: 169, pids: [171], name: "Ramesh", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 171, pids: [170], name: "Mallika", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 172, mid: 171, fid: 170, name: "Rithvik", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 173, mid: 171, fid: 170, name: "Satwik", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 174, mid: 168, fid: 169, pids: [175], name: "Prasad", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 175, pids: [174], name: "Swetha", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 176, mid: 175, fid: 174, name: "Anisha", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 177, mid: 175, fid: 174, name: "Arusha", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 178, mid: 168, fid: 169, name: "Pawan", gender: "male", img: "https://via.placeholder.com/100" },
+
+                    // Prabavathi and Lakshmi Narayana
+                    { id: 179, mid: 166, fid: 167, pids: [180], name: "Prabavathi", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 180, pids: [179], name: "Lakshmi Narayana", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 181, mid: 179, fid: 180, pids: [182], name: "Prabhu", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 182, pids: [181], name: "Radha", gender: "female", img: "https://via.placeholder.com/100" },
+
+                    // Nirmala and Late Yadagiri
+                    { id: 183, mid: 166, fid: 167, pids: [184], name: "Nirmala", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 184, pids: [183], name: "Late Yadagiri", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 185, mid: 183, fid: 184, name: "Srinivas", gender: "male", img: "https://via.placeholder.com/100" },
+
+                    // Ahok Kumar and Lakshmi
+                    { id: 186, mid: 166, fid: 167, pids: [187], name: "Ahok Kumar", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 187, pids: [186], name: "Lakshmi", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 188, mid: 187, fid: 186, name: "Abhijith", gender: "male", img: "https://via.placeholder.com/100" },
+
+                    // Shiva Kumar and Vijaya Laxmi
+                    { id: 189, mid: 166, fid: 167, pids: [190], name: "Shiva Kumar", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 190, pids: [189], name: "Vijaya Laxmi", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 191, mid: 190, fid: 189, name: "Vaishnavi", gender: "female", img: "https://via.placeholder.com/100" },
+
+                    // Prem Kumar and Jyothi
+                    { id: 192, mid: 166, fid: 167, pids: [193], name: "Prem Kumar", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 193, pids: [192], name: "Jyothi", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 194, mid: 193, fid: 192, name: "Parthiv", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 195, mid: 193, fid: 192, name: "Anurag", gender: "male", img: "https://via.placeholder.com/100" },
+
+                    // Devi and Vemula Satya Narayana
+                    { id: 196, mid: 166, fid: 167, pids: [197], name: "Devi", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 197, pids: [196], name: "Vemula Satya Narayana", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 198, mid: 197, fid: 196, pids: [199], name: "Vamshi", gender: "male", img: "https://via.placeholder.com/100" },
+                    { id: 199, pids: [198], name: "Sandhya Rani", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 200, mid: 199, fid: 198, name: "Hanvika", gender: "female", img: "https://via.placeholder.com/100" },
+                    { id: 201, mid: 197, fid: 196, name: "Subash", gender: "male", img: "https://via.placeholder.com/100" },
+
+
+
+                    // // Bharathamma and Manikya Narahari
+                    // { id: 202, mid: 71, fid: 70, pids: [203], name: "Bharathamma", gender: "female", img: "https://via.placeholder.com/100" },
+                    // { id: 203, pids: [202], name: "Manikya Narahari", gender: "male", img: "https://via.placeholder.com/100" },
+
+                    // // Jyothi and Narsimha
+                    // { id: 204, mid: 202, fid: 203, pids: [205], name: "Jyothi", gender: "female", img: "https://via.placeholder.com/100" },
+                    // { id: 205, pids: [204], name: "Narsimha", gender: "male", img: "https://via.placeholder.com/100" },
+                    // { id: 206, mid: 204, fid: 205, pids: [207], name: "Swetha", gender: "female", img: "https://via.placeholder.com/100" },
+                    // { id: 207, pids: [206], name: "Raghavendra", gender: "male", img: "https://via.placeholder.com/100" },
+                    // { id: 208, mid: 204, fid: 205, pids: [209], name: "Nithin", gender: "male", img: "https://via.placeholder.com/100" },
+                    // { id: 209, pids: [208], name: "Sravani", gender: "female", img: "https://via.placeholder.com/100" },
+                    // { id: 210, mid: 209, fid: 208, name: "Vidhmahi", gender: "female", img: "https://via.placeholder.com/100" },
+
+                    // // Ramohan and Radha
+                    // { id: 211, mid: 202, fid: 203, pids: [212], name: "Ramohan", gender: "male", img: "https://via.placeholder.com/100" },
+                    // { id: 212, pids: [211], name: "Radha", gender: "female", img: "https://via.placeholder.com/100" },
+                    // { id: 213, mid: 212, fid: 211, name: "Manoj", gender: "male", img: "https://via.placeholder.com/100" },
+                    // { id: 214, mid: 212, fid: 211, name: "Gnapi", gender: "female", img: "https://via.placeholder.com/100" },
+
+                    // // Rajitha (Chitti) and Hari
+                    // { id: 215, mid: 202, fid: 203, pids: [216], name: "Rajitha (Chitti)", gender: "female", img: "https://via.placeholder.com/100" },
+                    // { id: 216, pids: [215], name: "Hari", gender: "male", img: "https://via.placeholder.com/100" },
+                    // { id: 217, mid: 215, fid: 216, pids: [218], name: "Shilpa", gender: "female", img: "https://via.placeholder.com/100" },
+                    // { id: 218, pids: [217], name: "Sharath", gender: "male", img: "https://via.placeholder.com/100" },
+                    // { id: 219, mid: 217, fid: 218, name: "Sharvi", gender: "female", img: "https://via.placeholder.com/100" },
+                    // { id: 220, mid: 217, fid: 218, name: "Shritha", gender: "female", img: "https://via.placeholder.com/100" },
+                    // { id: 221, mid: 215, fid: 216, pids: [222], name: "Navya", gender: "female", img: "https://via.placeholder.com/100" },
+                    // { id: 222, pids: [221], name: "Srinivas", gender: "male", img: "https://via.placeholder.com/100" },
+                    // { id: 223, mid: 221, fid: 222, name: "Ishanvi", gender: "female", img: "https://via.placeholder.com/100" },
+                    // { id: 224, mid: 215, fid: 216, name: "Sai Koushik", gender: "male", img: "https://via.placeholder.com/100" },
+
+                    // // Srilatha and Beldhe Jaganmohan
+                    // { id: 225, mid: 202, fid: 203, pids: [226], name: "Srilatha", gender: "female", img: "https://via.placeholder.com/100" },
+                    // { id: 226, pids: [225], name: "Beldhe Jaganmohan", gender: "male", img: "https://via.placeholder.com/100" },
+                    // { id: 227, mid: 225, fid: 226, pids: [228], name: "Srujan", gender: "male", img: "https://via.placeholder.com/100" },
+                    // { id: 228, pids: [227], name: "Sai Aishwara", gender: "female", img: "https://via.placeholder.com/100" },
+                    // { id: 229, mid: 225, fid: 226, name: "Saurabh", gender: "male", img: "https://via.placeholder.com/100" }
+
+        ]);
+    </script>
+</body>
+</html>
